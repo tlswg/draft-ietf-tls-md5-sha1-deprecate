@@ -6,9 +6,9 @@ Internet Engineering Task Force                            L. Velvindron
 Internet-Draft                                             cyberstorm.mu
 Updates: 5246 7525 (if approved)                             K. Moriarty
 Intended status: Standards Track                                Dell EMC
-Expires: April 24, 2020                                       A. Ghedini
+Expires: May 23, 2020                                         A. Ghedini
                                                          Cloudflare Inc.
-                                                        October 22, 2019
+                                                       November 20, 2019
 
 
          Deprecating MD5 and SHA-1 signature hashes in TLS 1.2
@@ -29,14 +29,14 @@ Status of This Memo
    Internet-Drafts are working documents of the Internet Engineering
    Task Force (IETF).  Note that other groups may also distribute
    working documents as Internet-Drafts.  The list of current Internet-
-   Drafts is at http://datatracker.ietf.org/drafts/current/.
+   Drafts is at https://datatracker.ietf.org/drafts/current/.
 
    Internet-Drafts are draft documents valid for a maximum of six months
    and may be updated, replaced, or obsoleted by other documents at any
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on April 24, 2020.
+   This Internet-Draft will expire on May 23, 2020.
 
 Copyright Notice
 
@@ -45,7 +45,7 @@ Copyright Notice
 
    This document is subject to BCP 78 and the IETF Trust's Legal
    Provisions Relating to IETF Documents
-   (http://trustee.ietf.org/license-info) in effect on the date of
+   (https://trustee.ietf.org/license-info) in effect on the date of
    publication of this document.  Please review these documents
    carefully, as they describe your rights and restrictions with respect
    to this document.  Code Components extracted from this document must
@@ -53,9 +53,9 @@ Copyright Notice
 
 
 
-Velvindron, et al.       Expires April 24, 2020                 [Page 1]
+Velvindron, et al.        Expires May 23, 2020                  [Page 1]
 
-Internet-Draft      draft-ietf-tls-md5-sha1-deprecate       October 2019
+Internet-Draft      draft-ietf-tls-md5-sha1-deprecate      November 2019
 
 
    the Trust Legal Provisions and are provided without warranty as
@@ -75,7 +75,7 @@ Table of Contents
    9.  Acknowledgement . . . . . . . . . . . . . . . . . . . . . . .   4
    10. References  . . . . . . . . . . . . . . . . . . . . . . . . .   4
      10.1.  Normative References . . . . . . . . . . . . . . . . . .   4
-     10.2.  Informative References . . . . . . . . . . . . . . . . .   4
+     10.2.  Informative References . . . . . . . . . . . . . . . . .   5
    Authors' Addresses  . . . . . . . . . . . . . . . . . . . . . . .   5
 
 1.  Introduction
@@ -105,14 +105,17 @@ Table of Contents
    Clients SHOULD NOT include MD5 and SHA-1 in signature_algorithms
    extension.  If a client does not send a signature_algorithms
    extension, then the server MUST abort the handshake and send a
-   handshake_failure alert.
 
 
 
-Velvindron, et al.       Expires April 24, 2020                 [Page 2]
+
+Velvindron, et al.        Expires May 23, 2020                  [Page 2]
 
-Internet-Draft      draft-ietf-tls-md5-sha1-deprecate       October 2019
+Internet-Draft      draft-ietf-tls-md5-sha1-deprecate      November 2019
 
+
+   handshake_failure alert, except when digital signatures are not used
+   (for example, when using PSK ciphers).
 
 3.  Certificate Request
 
@@ -159,17 +162,17 @@ Internet-Draft      draft-ietf-tls-md5-sha1-deprecate       October 2019
 
    OLD:
 
+
+
+
+Velvindron, et al.        Expires May 23, 2020                  [Page 3]
+
+Internet-Draft      draft-ietf-tls-md5-sha1-deprecate      November 2019
+
+
    When using RSA, servers SHOULD authenticate using certificates with
    at least a 2048-bit modulus for the public key.  In addition, the use
    of the SHA-256 hash algorithm is RECOMMENDED (see [CAB-Baseline] for
-
-
-
-Velvindron, et al.       Expires April 24, 2020                 [Page 3]
-
-Internet-Draft      draft-ietf-tls-md5-sha1-deprecate       October 2019
-
-
    more details).  Clients SHOULD indicate to servers that they request
    SHA-256, by using the "Signature Algorithms" extension defined in TLS
    1.2.
@@ -203,8 +206,8 @@ Internet-Draft      draft-ietf-tls-md5-sha1-deprecate       October 2019
 
    [RFC2119]  Bradner, S., "Key words for use in RFCs to Indicate
               Requirement Levels", BCP 14, RFC 2119,
-              DOI 10.17487/RFC2119, March 1997, <https://www.rfc-
-              editor.org/info/rfc2119>.
+              DOI 10.17487/RFC2119, March 1997,
+              <https://www.rfc-editor.org/info/rfc2119>.
 
    [RFC7525]  Sheffer, Y., Holz, R., and P. Saint-Andre,
               "Recommendations for Secure Use of Transport Layer
@@ -212,19 +215,23 @@ Internet-Draft      draft-ietf-tls-md5-sha1-deprecate       October 2019
               (DTLS)", BCP 195, RFC 7525, DOI 10.17487/RFC7525, May
               2015, <https://www.rfc-editor.org/info/rfc7525>.
 
+
+
+
+
+
+
+Velvindron, et al.        Expires May 23, 2020                  [Page 4]
+
+Internet-Draft      draft-ietf-tls-md5-sha1-deprecate      November 2019
+
+
 10.2.  Informative References
 
    [CAB-Baseline]
               CA/Browser Forum, "Baseline Requirements for the Issuance
               and Management of Publicly-Trusted Certificates Version
               1.1.6", 2013, <https://www.cabforum.org/documents.html>.
-
-
-
-Velvindron, et al.       Expires April 24, 2020                 [Page 4]
-
-Internet-Draft      draft-ietf-tls-md5-sha1-deprecate       October 2019
-
 
    [NISTSP800-131A-R2]
               Barker, E. and A. Roginsky, "Transitioning the Use of
@@ -234,8 +241,8 @@ Internet-Draft      draft-ietf-tls-md5-sha1-deprecate       October 2019
 
    [RFC5246]  Dierks, T. and E. Rescorla, "The Transport Layer Security
               (TLS) Protocol Version 1.2", RFC 5246,
-              DOI 10.17487/RFC5246, August 2008, <https://www.rfc-
-              editor.org/info/rfc5246>.
+              DOI 10.17487/RFC5246, August 2008,
+              <https://www.rfc-editor.org/info/rfc5246>.
 
    [RFC6151]  Turner, S. and L. Chen, "Updated Security Considerations
               for the MD5 Message-Digest and the HMAC-MD5 Algorithms",
@@ -270,11 +277,4 @@ Authors' Addresses
 
 
 
-
-
-
-
-
-
-
-Velvindron, et al.       Expires April 24, 2020                 [Page 5]
+Velvindron, et al.        Expires May 23, 2020                  [Page 5]
