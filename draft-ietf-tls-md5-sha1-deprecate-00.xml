@@ -141,7 +141,7 @@
     proved SHA-1 collision attacks were practical.
      This document updates <xref
      target="RFC5246">RFC&nbsp;5246</xref> and <xref target="RFC7525">RFC7525 </xref> 
-     in such as way that MD5 and SHA1 MUST NOT
+     in such as way that MD5 and SHA-1 MUST NOT
      be used for digital signatures.  However, this document does not deprecate SHA-1 in HMAC for record protection.
 </t>
 
