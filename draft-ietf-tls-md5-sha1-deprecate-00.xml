@@ -155,7 +155,7 @@
 
    <section anchor="Signature_algorithms" title="Signature Algorithms">
    <t>
-   Clients SHOULD NOT include MD5 and SHA-1 in  signature_algorithms extension. If
+   Clients SHOULD NOT include MD5 and SHA-1 in the signature_algorithms extension. If
    a client does not send a  signature_algorithms extension, then the server
    MUST abort the handshake and send a handshake_failure alert, except when
    digital signatures are not used (for example, when using PSK ciphers).
@@ -176,11 +176,18 @@
    </section>
   <section anchor="CertificateVerify" title="Certificate Verify">
    <t>
-   Clients MUST NOT include MD5 and SHA-1 in CertificateVerify message.  
+   Clients MUST NOT include MD5 and SHA-1 in CertificateVerify message. If the
+   server receives a CertificateVerify message with MD5 or SHA-1 it MUST
+   abort the connection with handshake_failure or insufficient_security alert.
    </t>
    </section>
    
 <section anchor="updates_to_rfc5246" title="Updates to RFC5246">
+<t>
+<xref target="RFC5246">RFC5246 </xref>, The Transport Layer Security (TLS) Protocol
+Version 1.2, suggests that implementations can assume support for MD5 and SHA-1
+by their peer. This update changes the suggestion to assume support for SHA-256
+instead, due to MD5 and SHA-1 being deprecated.
 <t> OLD: </t>
 <t>
    In Section 7.4.1.4.1: the text should be revised from " Note: this is
@@ -217,12 +224,12 @@ it is understood as having been deprecated.
 
 <t>NEW:</t>
 <t>
-   servers SHOULD authenticate using certificates with
+   Servers SHOULD authenticate using certificates with
    at least a 2048-bit modulus for the public key.
 </t>
 <t>
   In addition, the use
-   of the SHA-256 hash algorithm is RECOMMENDED, SHA-1 or MD5 MUST not be used 
+   of the SHA-256 hash algorithm is RECOMMENDED, SHA-1 or MD5 MUST NOT be used 
    (see <xref target="CAB-Baseline"></xref> for
    more details).  Clients MUST indicate to servers that they request
    SHA-256, by using the "Signature Algorithms" extension defined in
