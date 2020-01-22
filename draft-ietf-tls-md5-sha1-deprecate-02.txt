@@ -294,13 +294,13 @@ Internet-Draft      draft-ietf-tls-md5-sha1-deprecate       January 2020
    Kathleen Moriarty
    Dell EMC
 
+   Email: Kathleen.Moriarty.ietf@gmail.com
+
 
    Alessandro Ghedini
    Cloudflare Inc.
 
-
-
-
+   Email: alessandro@cloudflare.com
 
 
 
