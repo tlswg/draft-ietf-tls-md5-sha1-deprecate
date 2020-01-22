@@ -86,10 +86,17 @@
 
 <author fullname="Kathleen Moriarty" initials="K.M." surname="Moriarty" >
 <organization>Dell EMC</organization>
+<address>
+<email>Kathleen.Moriarty.ietf@gmail.com</email>
+</address>
 </author>
 
 <author fullname="Alessandro Ghedini" initials="A.G." surname="Ghedini" >
 <organization>Cloudflare Inc.</organization>
+<address>
+<email>alessandro@cloudflare.com</email>
+</address>
+
 </author>
 
 
