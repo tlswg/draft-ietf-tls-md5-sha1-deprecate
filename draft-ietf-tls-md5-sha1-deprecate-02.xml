@@ -1,0 +1,350 @@
+<?xml version="1.0" encoding="US-ASCII"?>
+<!-- This template is for creating an Internet Draft using xml2rfc,
+    which is available here: http://xml.resource.org. -->
+<!DOCTYPE rfc SYSTEM "rfc2629.dtd" [
+<!-- One method to get references from the online citation libraries.
+    There has to be one entity for each item to be referenced. 
+    An alternate method (rfc include) is described in the references. -->
+
+<!ENTITY RFC2119 SYSTEM "http://xml.resource.org/public/rfc/bibxml/reference.RFC.2119.xml">
+<!ENTITY RFC5246 SYSTEM "http://xml.resource.org/public/rfc/bibxml/reference.RFC.5246.xml">
+<!ENTITY RFC3552 SYSTEM "http://xml.resource.org/public/rfc/bibxml/reference.RFC.3552.xml">
+<!ENTITY RFC5226 SYSTEM "http://xml.resource.org/public/rfc/bibxml/reference.RFC.5226.xml">
+<!ENTITY RFC6151 SYSTEM "http://xml.resource.org/public/rfc/bibxml/reference.RFC.6151.xml">
+<!ENTITY RFC7525 SYSTEM "http://xml.resource.org/public/rfc/bibxml/reference.RFC.7525.xml">
+]>
+<?xml-stylesheet type='text/xsl' href='rfc2629.xslt' ?>
+<!-- used by XSLT processors -->
+<!-- For a complete list and description of processing instructions (PIs), 
+    please see http://xml.resource.org/authoring/README.html. -->
+<!-- Below are generally applicable Processing Instructions (PIs) that most I-Ds might want to use.
+    (Here they are set differently than their defaults in xml2rfc v1.32) -->
+<?rfc strict="yes" ?>
+<!-- give errors regarding ID-nits and DTD validation -->
+<!-- control the table of contents (ToC) -->
+<?rfc toc="yes"?>
+<!-- generate a ToC -->
+<?rfc tocdepth="4"?>
+<!-- the number of levels of subsections in ToC. default: 3 -->
+<!-- control references -->
+<?rfc symrefs="yes"?>
+<!-- use symbolic references tags, i.e, [RFC2119] instead of [1] -->
+<?rfc sortrefs="yes" ?>
+<!-- sort the reference entries alphabetically -->
+<!-- control vertical white space 
+    (using these PIs as follows is recommended by the RFC Editor) -->
+<?rfc compact="yes" ?>
+<!-- do not start each main section on a new page -->
+<?rfc subcompact="no" ?>
+<!-- keep one blank line between list items -->
+<!-- end of list of popular I-D processing instructions -->
+<rfc category="std" docName="draft-ietf-tls-md5-sha1-deprecate-02" ipr="trust200902" updates="5246 7525">
+ <!-- category values: std, bcp, info, exp, and historic
+    ipr values: trust200902, noModificationTrust200902, noDerivativesTrust200902,
+       or pre5378Trust200902
+    you can add the attributes updates="NNNN" and obsoletes="NNNN" 
+    they will automatically be output with "(if approved)" -->
+
+ <!-- ***** FRONT MATTER ***** -->
+
+ <front>
+   <!-- The abbreviated title is used in the page header - it is only necessary if the 
+        full title is longer than 39 characters -->
+
+   <title abbrev="draft-ietf-tls-md5-sha1-deprecate">Deprecating MD5 and SHA-1 signature hashes in TLS 1.2</title>
+
+   <!-- add 'role="editor"' below for the editors if appropriate -->
+
+   <!-- Another author who claims to be an editor -->
+
+   <author fullname="Loganaden Velvindron" initials="L.V." 
+           surname="Velvindron">
+     <organization>cyberstorm.mu</organization>
+
+     <address>
+       <postal>
+         <street></street>
+
+         <!-- Reorder these if your country does things differently -->
+
+         <city>Rose Hill</city>
+
+         <region></region>
+
+         <code></code>
+
+         <country>MU</country>
+       </postal>
+
+       <phone>+230 59762817</phone>
+
+       <email>logan@cyberstorm.mu</email>
+
+       <!-- uri and facsimile elements may also be added -->
+     </address>
+   </author>
+
+<author fullname="Kathleen Moriarty" initials="K.M." surname="Moriarty" >
+<organization>Dell EMC</organization>
+</author>
+
+<author fullname="Alessandro Ghedini" initials="A.G." surname="Ghedini" >
+<organization>Cloudflare Inc.</organization>
+</author>
+
+
+   <date year="2020" />
+
+   <!-- If the month and year are both specified and are the current ones, xml2rfc will fill 
+        in the current day for you. If only the current year is specified, xml2rfc will fill 
+	 in the current day and month for you. If the year is not the current one, it is 
+	 necessary to specify at least a month (xml2rfc assumes day="1" if not specified for the 
+	 purpose of calculating the expiry date).  With drafts it is normally sufficient to 
+	 specify just the year. -->
+
+   <!-- Meta-data Declarations -->
+
+   <area>General</area>
+
+   <workgroup>Internet Engineering Task Force</workgroup>
+
+   <!-- WG name at the upperleft corner of the doc,
+        IETF is fine for individual submissions.  
+	 If this element is not present, the default is "Network Working Group",
+        which is used by the RFC Editor as a nod to the history of the IETF. -->
+
+   <keyword>tls</keyword>
+
+   <!-- Keywords will be incorporated into HTML output
+        files in a meta tag but they have no effect on text or nroff
+        output. If you submit your draft to the RFC Editor, the
+        keywords will be used for the search engine. -->
+
+   <abstract>
+     <t>The MD5 and SHA-1 hashing algorithms are steadily weakening in strength and
+             their deprecation process should begin for their use in TLS 1.2 digital signatures.
+             However, this document does not deprecate SHA-1 in HMAC for record protection.
+  </t>
+   </abstract>
+ </front>
+
+ <middle>
+   <section title="Introduction">
+     <t>The usage of MD5 and SHA-1 for signature hashing in TLS 1.2 is specified in <xref
+     target="RFC5246">RFC&nbsp;5246</xref>. MD5 and SHA-1 have been proven to be insecure, 
+     subject to collision attacks. <xref target="RFC6151">RFC&nbsp;6151</xref> details the security considerations, including collision attacks 
+     for MD5, published in 2011.  NIST formally deprecated use of SHA-1 in 2011 
+   <xref target="NISTSP800-131A-R2"></xref> and 
+    disallowed its use for digital signatures at the end of 2013, based on both the Wang, et. al, attack and the 
+    potential for brute-force attack.  Further, in 2017, researchers from Google and CWI Amsterdam 
+    <xref target="SHA-1-Collision"></xref> 
+    proved SHA-1 collision attacks were practical.
+     This document updates <xref
+     target="RFC5246">RFC&nbsp;5246</xref> and <xref target="RFC7525">RFC7525 </xref> 
+     in such as way that MD5 and SHA-1 MUST NOT
+     be used for digital signatures.  However, this document does not deprecate SHA-1 in HMAC for record protection.
+</t>
+
+     <section title="Requirements Language">
+       <t>The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT",
+       "SHOULD", "SHOULD NOT", "RECOMMENDED", "MAY", and "OPTIONAL" in this
+       document are to be interpreted as described in <xref
+       target="RFC2119">RFC 2119</xref>.</t>
+     </section>
+   </section>
+
+   <section anchor="Signature_algorithms" title="Signature Algorithms">
+   <t>
+   Clients SHOULD NOT include MD5 and SHA-1 in the signature_algorithms extension. If
+   a client does not send a  signature_algorithms extension, then the server
+   MUST abort the handshake and send a handshake_failure alert, except when
+   digital signatures are not used (for example, when using PSK ciphers).
+   </t>
+   </section>
+   <section anchor="cert_requests" title="Certificate Request">
+   <t>
+   Servers SHOULD NOT include MD5 and SHA-1 in CertificateRequest message.  
+   </t>
+   </section>
+  <section anchor="serverkeyexchange" title="Server Key Exchange">
+   <t>
+   Servers MUST NOT include MD5 and SHA-1 in ServerKeyExchange message. 
+   If client does 
+   receive a MD5 or SHA-1 signature in the ServerKeyExchange message and it
+   sent one in signature_algorithms extensions it MUST
+   abort the connection with handshake_failure or insufficient_security alert.
+   If client did not send MD5 nor SHA-1 hash algorithm in signature_algorithms
+   extension and it receives a MD5 or SHA-1 signature in the ServerKeyExchange
+   it MUST abort the connection with the illegal_parameter alert.
+   </t>
+   </section>
+  <section anchor="CertificateVerify" title="Certificate Verify">
+   <t>
+   Clients MUST NOT include MD5 and SHA-1 in CertificateVerify message. If the
+   server receives a CertificateVerify message with MD5 or SHA-1 it MUST
+   abort the connection with handshake_failure or insufficient_security alert.
+   </t>
+   </section>
+   
+<section anchor="updates_to_rfc5246" title="Updates to RFC5246">
+<t>
+<xref target="RFC5246">RFC5246 </xref>, The Transport Layer Security (TLS) Protocol
+Version 1.2, suggests that implementations can assume support for MD5 and SHA-1
+by their peer. This update changes the suggestion to assume support for SHA-256
+instead, due to MD5 and SHA-1 being deprecated.
+</t>
+<t> OLD: </t>
+<t>
+   In Section 7.4.1.4.1: the text should be revised from " Note: this is
+   a change from TLS 1.1 where there are no explicit rules, but as a
+   practical matter one can assume that the peer supports MD5 and SHA-
+   1."
+</t>
+
+<t>   NEW: </t>
+
+<t>
+   "Note: This is a change from TLS 1.1 where there are no explicit
+   rules, but as a practical matter one can assume that the peer supports
+   SHA-256."
+</t>
+</section>
+
+<section anchor="updates_to_rfc7525" title="Updates to RFC7525">
+<t>
+<xref target="RFC7525">RFC7525 </xref>, Recommendations for Secure Use of Transport Layer Security (TLS) and 
+Datagram Transport Layer Security (DTLS) recommends use of SHA-256 as a minimum requirement.  
+This update moves the minimum recommendation to use stronger language deprecating use of 
+both SHA-1 and MD5.  The prior text did not explicitly include MD5 and this text adds it to ensure 
+it is understood as having been deprecated.
+</t>
+<t>Section 4.3:</t>
+<t>OLD:</t>
+<t>   When using RSA, servers SHOULD authenticate using certificates with
+   at least a 2048-bit modulus for the public key.  In addition, the use
+   of the SHA-256 hash algorithm is RECOMMENDED (see <xref target="CAB-Baseline"></xref> for
+   more details).  Clients SHOULD indicate to servers that they request
+   SHA-256, by using the "Signature Algorithms" extension defined in
+   TLS 1.2.</t>
+
+<t>NEW:</t>
+<t>
+   Servers SHOULD authenticate using certificates with
+   at least a 2048-bit modulus for the public key.
+</t>
+<t>
+  In addition, the use
+   of the SHA-256 hash algorithm is RECOMMENDED, SHA-1 or MD5 MUST NOT be used 
+   (see <xref target="CAB-Baseline"></xref> for
+   more details).  Clients MUST indicate to servers that they request
+   SHA-256, by using the "Signature Algorithms" extension defined in
+   TLS 1.2.
+</t> 
+</section>
+ 
+   <section anchor="Security" title="Security Considerations">
+     <t> Concerns with TLS 1.2 implementations falling back to SHA-1 is an issue. 
+              This draft updates the TLS 1.2 specification to deprecate support for MD5
+              and SHA-1 for digital signatures. However, this document does not deprecate SHA-1 in HMAC for record protection.
+     </t>
+   </section>
+
+   <section anchor="Acknowledgement" title="Acknowledgement">
+     <t> The authors would like to thank Hubert Kario for his help in writing the initial 
+              draft. We are also grateful to Daniel Migault, Martin Thomson and David Cooper
+             for their feedback.
+     </t>
+   </section>
+ </middle>
+
+ <!--  *****BACK MATTER ***** -->
+
+ <back>
+   <!-- References split into informative and normative -->
+
+   <!-- There are 2 ways to insert reference entries from the citation libraries:
+    1. define an ENTITY at the top, and use "ampersand character"RFC2629; here (as shown)
+    2. simply use a PI "less than character"?rfc include="reference.RFC.2119.xml"?> here
+       (for I-Ds: include="reference.I-D.narten-iana-considerations-rfc2434bis.xml")
+
+    Both are cited textually in the same manner: by using xref elements.
+    If you use the PI option, xml2rfc will, by default, try to find included files in the same
+    directory as the including file. You can also define the XML_LIBRARY environment variable
+    with a value containing a set of directories to search.  These can be either in the local
+    filing system or remote ones accessed by http (http://domain/dir/... ).-->
+
+   <references title="Normative References">
+     <!--?rfc include="http://xml.resource.org/public/rfc/bibxml/reference.RFC.2119.xml"?-->
+     &RFC2119;
+     &RFC7525;
+
+   </references>
+
+   <references title="Informative References">
+     <!-- Here we use entities that we defined at the beginning. -->
+
+     &RFC5246;
+     &RFC6151;
+<reference anchor="NISTSP800-131A-R2"  
+target="https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-131Ar2.pdf">
+<front>
+<title>
+Transitioning the Use of Cryptographic Algorithms and Key Lengths
+</title>
+<author  initials="E.B" surname="Barker" fullname="Elaine Barker">
+<organization  />
+</author>
+<author  initials="A.R" surname="Roginsky" fullname="Allen Roginsky">
+<organization  />
+</author>
+<date month="March" year="2019" />
+</front>
+</reference>
+
+<reference anchor="CAB-Baseline"  
+target="https://www.cabforum.org/documents.html">
+<front>
+<title>
+Baseline Requirements for the Issuance and Management of Publicly-Trusted Certificates Version 1.1.6
+</title>
+<author>
+<organization>CA/Browser Forum</organization>
+</author>
+<date year="2013" />
+</front>
+</reference>
+
+
+<reference anchor="SHA-1-Collision"  
+target="http://shattered.io/static/shattered.pdf">
+<front>
+<title>
+The first collision for full SHA-1
+</title>
+<author  initials="M.S" surname="Stevens" fullname="Marc Stevens">
+<organization  />
+</author>
+<author  initials="E.B" surname="Bursztein" fullname="Elie Bursztein">
+<organization  />
+</author>
+<author  initials="P.K" surname="Karpman" fullname="Pierre Karpman">
+<organization  />
+</author>
+<author  initials="A.A" surname="Albertini" fullname="Ange Albertini">
+<organization  />
+</author>
+<author  initials="Y.M" surname="Markov" fullname="Yarik Markov">
+<organization  />
+</author>
+<date month="March" year="2019" />
+</front>
+</reference>
+</references>
+
+
+
+   <!-- Change Log
+
+  -->
+ </back>
+</rfc>
