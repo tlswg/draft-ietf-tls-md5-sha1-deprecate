@@ -143,7 +143,11 @@
      for MD5, published in 2011.  NIST formally deprecated use of SHA-1 in 2011 
    <xref target="NISTSP800-131A-R2"></xref> and 
     disallowed its use for digital signatures at the end of 2013, based on both the Wang, et. al, attack and the 
-    potential for brute-force attack.  Further, in 2017, researchers from Google and CWI Amsterdam 
+    potential for brute-force attack.  In 2016, researchers from INRIA identified
+    a new class of transcript collision attacks on TLS (and other protocols)
+    that rely on efficient collision-finding algorithms on the underlying hash
+    constructions <xref target="Transcript-Collision"></xref>.  Further, in 2017,
+    researchers from Google and CWI Amsterdam 
     <xref target="SHA-1-Collision"></xref> 
     proved SHA-1 collision attacks were practical.
      This document updates <xref
@@ -318,6 +322,22 @@ Baseline Requirements for the Issuance and Management of Publicly-Trusted Certif
 <organization>CA/Browser Forum</organization>
 </author>
 <date year="2013" />
+</front>
+</reference>
+
+<reference anchor="Transcript-Collision"  
+target="https://www.mitls.org/downloads/transcript-collisions.pdf">
+<front>
+<title>
+Transcript Collision Attacks: Breaking Authentication in TLS, IKE, and SSH
+</title>
+<author  initials="K.B" surname="Bhargavan" fullname="Karthikeyan Bhargavan">
+<organization  />
+</author>
+<author  initials="G.L" surname="Leurent" fullname="Gaetan Leurent">
+<organization  />
+</author>
+<date month="February" year="2016" />
 </front>
 </reference>
 
