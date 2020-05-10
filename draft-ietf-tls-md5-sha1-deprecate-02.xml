@@ -152,7 +152,7 @@
     proved SHA-1 collision attacks were practical.
      This document updates <xref
      target="RFC5246">RFC&nbsp;5246</xref> and <xref target="RFC7525">RFC7525 </xref> 
-     in such as way that MD5 and SHA-1 MUST NOT
+     in such a way that MD5 and SHA-1 MUST NOT
      be used for digital signatures.  However, this document does not deprecate SHA-1 in HMAC for record protection.
 </t>
 
@@ -166,32 +166,27 @@
 
    <section anchor="Signature_algorithms" title="Signature Algorithms">
    <t>
-   Clients SHOULD NOT include MD5 and SHA-1 in the signature_algorithms extension. If
-   a client does not send a  signature_algorithms extension, then the server
+   Clients MUST NOT include MD5 and SHA-1 in the signature_algorithms extension. If
+   a client does not send a signature_algorithms extension, then the server
    MUST abort the handshake and send a handshake_failure alert, except when
    digital signatures are not used (for example, when using PSK ciphers).
    </t>
    </section>
    <section anchor="cert_requests" title="Certificate Request">
    <t>
-   Servers SHOULD NOT include MD5 and SHA-1 in CertificateRequest message.  
+   Servers SHOULD NOT include MD5 and SHA-1 in CertificateRequest messages.  
    </t>
    </section>
   <section anchor="serverkeyexchange" title="Server Key Exchange">
    <t>
-   Servers MUST NOT include MD5 and SHA-1 in ServerKeyExchange message. 
-   If client does 
-   receive a MD5 or SHA-1 signature in the ServerKeyExchange message and it
-   sent one in signature_algorithms extensions it MUST
-   abort the connection with handshake_failure or insufficient_security alert.
-   If client did not send MD5 nor SHA-1 hash algorithm in signature_algorithms
-   extension and it receives a MD5 or SHA-1 signature in the ServerKeyExchange
-   it MUST abort the connection with the illegal_parameter alert.
+   Servers MUST NOT include MD5 and SHA-1 in ServerKeyExchange messages. 
+   If a client receives a MD5 or SHA-1 signature in a ServerKeyExchange
+   message it MUST abort the connection with the illegal_parameter alert.
    </t>
    </section>
   <section anchor="CertificateVerify" title="Certificate Verify">
    <t>
-   Clients MUST NOT include MD5 and SHA-1 in CertificateVerify message. If the
+   Clients MUST NOT include MD5 and SHA-1 in CertificateVerify messages. If a
    server receives a CertificateVerify message with MD5 or SHA-1 it MUST
    abort the connection with handshake_failure or insufficient_security alert.
    </t>
