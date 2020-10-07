@@ -13,6 +13,7 @@
 <!ENTITY RFC6151 SYSTEM "http://xml.resource.org/public/rfc/bibxml/reference.RFC.6151.xml">
 <!ENTITY RFC7525 SYSTEM "http://xml.resource.org/public/rfc/bibxml/reference.RFC.7525.xml">
 <!ENTITY RFC8174 SYSTEM "http://xml.resource.org/public/rfc/bibxml/reference.RFC.8174.xml">
+<!ENTITY RFC8447 SYSTEM "http://xml.resource.org/public/rfc/bibxml/reference.RFC.8447.xml">
 ]>
 <?xml-stylesheet type='text/xsl' href='rfc2629.xslt' ?>
 <!-- used by XSLT processors -->
@@ -252,6 +253,23 @@ adds guidance to ensure that these algorithms have been deprecated..
    TLS 1.2.
 </t> 
 </section>
+
+<section anchor="IANA" title="IANA Considerations">
+<t> The document updates the "TLS SignatureScheme" registry to change the recommended status of 
+SHA-1 based signature schemes to N (not recommended) as defined by <xref target="RFC8447"></xref>.  
+The following entries are to be updated:
+</t>
+<texttable>
+  <ttcol align='center'>Value</ttcol>
+  <ttcol align='center'>Description</ttcol>
+  <ttcol align='center'>Recommended</ttcol>
+  <ttcol align='center'>Reference</ttcol>
+      <c>0x0201</c>  <c>rsa_pkcs1_sha1</c> <c>N</c>	<c>[RFC8446][RFCTBD]</c>
+      <c>0x0203</c>  <c>ecdsa_sha1</c> <c>N</c><c>[RFC8446][RFCTBD]</c>
+</texttable>
+
+<t>Other entries of the resgistry remain the same. </t>
+</section>
  
    <section anchor="Security" title="Security Considerations">
      <t> Concerns with TLS 1.2 implementations falling back to SHA-1 is an issue. 
@@ -290,7 +308,7 @@ adds guidance to ensure that these algorithms have been deprecated..
      &RFC5246;
      &RFC7525;
      &RFC8174;
-
+     &RFC8447;
    </references>
 
    <references title="Informative References">
