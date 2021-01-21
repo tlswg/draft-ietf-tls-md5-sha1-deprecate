@@ -11,6 +11,7 @@
 <!ENTITY RFC3552 SYSTEM "http://xml.resource.org/public/rfc/bibxml/reference.RFC.3552.xml">
 <!ENTITY RFC5226 SYSTEM "http://xml.resource.org/public/rfc/bibxml/reference.RFC.5226.xml">
 <!ENTITY RFC6151 SYSTEM "http://xml.resource.org/public/rfc/bibxml/reference.RFC.6151.xml">
+<!ENTITY RFC6194 SYSTEM "http://xml.resource.org/public/rfc/bibxml/reference.RFC.6194.xml">
 <!ENTITY RFC7525 SYSTEM "http://xml.resource.org/public/rfc/bibxml/reference.RFC.7525.xml">
 <!ENTITY RFC8174 SYSTEM "http://xml.resource.org/public/rfc/bibxml/reference.RFC.8174.xml">
 <!ENTITY RFC8447 SYSTEM "http://xml.resource.org/public/rfc/bibxml/reference.RFC.8447.xml">
@@ -143,8 +144,8 @@
    <section title="Introduction">
      <t>The usage of MD5 and SHA-1 for signature hashing in TLS 1.2 is specified in <xref
      target="RFC5246"/>. MD5 and SHA-1 have been proven to be insecure, 
-     subject to collision attacks <xref target="Wang" />. In 2011, <xref target="RFC6151" /> detailed the security considerations, including collision attacks 
-     for MD5.  NIST formally deprecated use of SHA-1 in 2011 
+     subject to collision attacks <xref target="Wang" />. In 2011, <xref target="RFC6151" /> and <xref target="RFC6194" /> detailed the security considerations, including collision attacks 
+     for MD5 and SHA-1, respectively.  NIST formally deprecated use of SHA-1 in 2011 
    <xref target="NISTSP800-131A-R2" /> and 
     disallowed its use for digital signatures at the end of 2013, based on both the Wang, et. al, attack and the 
     potential for brute-force attack.  In 2016, researchers from INRIA identified
@@ -157,7 +158,7 @@
      This document updates <xref
      target="RFC5246" /> and <xref target="RFC7525" />
      in such a way that MD5 and SHA-1 MUST NOT
-     be used for digital signatures.  However, this document does not deprecate SHA-1 in HMAC for record protection.
+     be used for digital signatures.  However, this document does not deprecate MD5 or SHA-1 in HMAC for record protection.
 </t>
 
      <section title="Requirements Language">
@@ -315,6 +316,7 @@ The following entries are to be updated:
      <!-- Here we use entities that we defined at the beginning. -->
 
      &RFC6151;
+     &RFC6194;
 <reference anchor="NISTSP800-131A-R2"  
 target="https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-131Ar2.pdf">
 <front>
