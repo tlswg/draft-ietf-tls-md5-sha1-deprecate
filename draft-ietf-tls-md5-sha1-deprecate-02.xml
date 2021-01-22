@@ -13,6 +13,7 @@
 <!ENTITY RFC6151 SYSTEM "http://xml.resource.org/public/rfc/bibxml/reference.RFC.6151.xml">
 <!ENTITY RFC7525 SYSTEM "http://xml.resource.org/public/rfc/bibxml/reference.RFC.7525.xml">
 <!ENTITY RFC8174 SYSTEM "http://xml.resource.org/public/rfc/bibxml/reference.RFC.8174.xml">
+<!ENTITY RFC8446 SYSTEM "http://xml.resource.org/public/rfc/bibxml/reference.RFC.8446.xml">
 <!ENTITY RFC8447 SYSTEM "http://xml.resource.org/public/rfc/bibxml/reference.RFC.8447.xml">
 ]>
 <?xml-stylesheet type='text/xsl' href='rfc2629.xslt' ?>
@@ -41,7 +42,7 @@
 <?rfc subcompact="no" ?>
 <!-- keep one blank line between list items -->
 <!-- end of list of popular I-D processing instructions -->
-<rfc category="std" docName="draft-ietf-tls-md5-sha1-deprecate-04" ipr="trust200902" updates="5246 7525">
+<rfc category="std" docName="draft-ietf-tls-md5-sha1-deprecate-05" ipr="trust200902" updates="5246 7525">
  <!-- category values: std, bcp, info, exp, and historic
     ipr values: trust200902, noModificationTrust200902, noDerivativesTrust200902,
        or pre5378Trust200902
@@ -103,7 +104,7 @@
 </author>
 
 
-   <date year="2020" />
+   <date year="2021" />
 
    <!-- If the month and year are both specified and are the current ones, xml2rfc will fill 
         in the current day for you. If only the current year is specified, xml2rfc will fill 
@@ -131,11 +132,10 @@
         keywords will be used for the search engine. -->
 
    <abstract>
-     <t>The MD5 and SHA-1 hashing algorithms are steadily weakening in strength and
-             their deprecation process should begin for their use in TLS 1.2 digital signatures.
-             However, this document does not deprecate SHA-1 in HMAC for record protection.
-	     This document updates RFC 5246 and RFC 7525.
-  </t>
+       <t>
+           The MD5 and SHA-1 hashing algorithms are increasingly vulnerable to attack and this document deprecates their use in TLS 1.2 digital signatures.
+        However, this document does not deprecate SHA-1 in HMAC for record protection. This document updates RFC 5246 and RFC 7525.
+    </t>
    </abstract>
  </front>
 
@@ -229,7 +229,7 @@ instead, due to MD5 and SHA-1 being deprecated.
 Datagram Transport Layer Security (DTLS) recommends use of SHA-256 as a minimum requirement.  
 This update moves the minimum recommendation to use stronger language deprecating use of 
 both SHA-1 and MD5.  The prior text did not explicitly include MD5 or SHA-1; and this text
-adds guidance to ensure that these algorithms have been deprecated..
+adds guidance to ensure that these algorithms have been deprecated.
 </t>
 <t>Section 4.3:</t>
 <t>OLD:</t>
@@ -264,16 +264,16 @@ The following entries are to be updated:
   <ttcol align='center'>Description</ttcol>
   <ttcol align='center'>Recommended</ttcol>
   <ttcol align='center'>Reference</ttcol>
-      <c>0x0201</c>  <c>rsa_pkcs1_sha1</c> <c>N</c>	<c>[RFC8446][RFCTBD]</c>
-      <c>0x0203</c>  <c>ecdsa_sha1</c> <c>N</c><c>[RFC8446][RFCTBD]</c>
+      <c>0x0201</c>  <c>rsa_pkcs1_sha1</c> <c>N</c>	<c><xref target="RFC8446"></xref> [RFCTBD]</c>
+      <c>0x0203</c>  <c>ecdsa_sha1</c> <c>N</c><c><xref target="RFC8446"></xref> [RFCTBD]</c>
 </texttable>
 
-<t>Other entries of the resgistry remain the same. </t>
+<t>Other entries of the registry remain the same. </t>
 </section>
  
    <section anchor="Security" title="Security Considerations">
      <t> Concerns with TLS 1.2 implementations falling back to SHA-1 is an issue. 
-              This draft updates the TLS 1.2 specification to deprecate support for MD5
+              This document updates the TLS 1.2 specification to deprecate support for MD5
               and SHA-1 for digital signatures. However, this document does not deprecate SHA-1 in HMAC for record protection.
      </t>
    </section>
@@ -308,6 +308,7 @@ The following entries are to be updated:
      &RFC5246;
      &RFC7525;
      &RFC8174;
+     &RFC8446;
      &RFC8447;
    </references>
 
