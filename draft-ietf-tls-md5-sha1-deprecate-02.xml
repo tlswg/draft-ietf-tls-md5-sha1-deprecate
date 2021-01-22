@@ -132,11 +132,10 @@
         keywords will be used for the search engine. -->
 
    <abstract>
-     <t>The MD5 and SHA-1 hashing algorithms are steadily weakening in strength and
-             their deprecation process should begin for their use in TLS 1.2 digital signatures.
-             However, this document does not deprecate SHA-1 in HMAC for record protection.
-	     This document updates RFC 5246 and RFC 7525.
-  </t>
+       <t>
+           The MD5 and SHA-1 hashing algorithms are increasingly vulnerable to attack and this document deprecates their use in TLS 1.2 digital signatures.
+        However, this document does not deprecate SHA-1 in HMAC for record protection. This document updates RFC 5246 and RFC 7525.
+    </t>
    </abstract>
  </front>
 
@@ -274,7 +273,7 @@ The following entries are to be updated:
  
    <section anchor="Security" title="Security Considerations">
      <t> Concerns with TLS 1.2 implementations falling back to SHA-1 is an issue. 
-              This draft updates the TLS 1.2 specification to deprecate support for MD5
+              This document updates the TLS 1.2 specification to deprecate support for MD5
               and SHA-1 for digital signatures. However, this document does not deprecate SHA-1 in HMAC for record protection.
      </t>
    </section>
