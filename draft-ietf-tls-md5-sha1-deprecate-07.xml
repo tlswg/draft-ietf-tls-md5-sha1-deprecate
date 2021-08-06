@@ -173,10 +173,7 @@
    <section anchor="Signature_algorithms" title="Signature Algorithms">
    <t>
    Clients MUST include the signature_algorithms extension. Clients MUST NOT include MD5
-   and SHA-1 in it this extension. Servers MUST NOT include MD5 and SHA-1 in ServerKeyExchange 
-   messages. If no other signature algorithms are available (for example, if the client does 
-   not send a signature_algorithms extension), the server MUST abort the handshake with a 
-   handshake_failure alert or select a different cipher suite.
+   and SHA-1 in it this extension.
    </t>
    </section>
    <section anchor="cert_requests" title="Certificate Request">
@@ -186,9 +183,11 @@
    </section>
   <section anchor="serverkeyexchange" title="Server Key Exchange">
    <t>
-   Servers MUST NOT include MD5 and SHA-1 in ServerKeyExchange messages. 
-   If a client receives a MD5 or SHA-1 signature in a ServerKeyExchange
-   message it MUST abort the connection with the illegal_parameter alert.
+   Servers MUST NOT include MD5 and SHA-1 in ServerKeyExchange 
+   messages. If no other signature algorithms are available (for
+   example, if the client does not send a signature_algorithms extension),
+   the server MUST abort the handshake with a handshake_failure alert or
+   select a different cipher suite.
    </t>
    </section>
   <section anchor="CertificateVerify" title="Certificate Verify">
