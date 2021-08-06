@@ -224,37 +224,6 @@ instead, due to MD5 and SHA-1 being deprecated.
 </t>
 </section>
 
-<section anchor="updates_to_rfc7525" title="Updates to RFC7525">
-<t>
-<xref target="RFC7525" />, Recommendations for Secure Use of Transport Layer Security (TLS) and 
-Datagram Transport Layer Security (DTLS), recommends use of SHA-256 as a minimum requirement.  
-This update moves the minimum recommendation to use stronger language deprecating use of 
-both SHA-1 and MD5.  The prior text did not explicitly include MD5 or SHA-1; and this text
-adds guidance to ensure that these algorithms have been deprecated.
-</t>
-<t>Section 4.3:</t>
-<t>OLD:</t>
-<t>   When using RSA, servers SHOULD authenticate using certificates with
-   at least a 2048-bit modulus for the public key.  In addition, the use of the
-   SHA-256 hash algorithm is RECOMMENDED (see <xref target="CAB-Baseline"></xref> for
-   more details).  Clients SHOULD indicate to servers that they request
-   SHA-256, by using the "Signature Algorithms" extension defined in
-   TLS 1.2.</t>
-
-<t>NEW:</t>
-<t>
-   Servers SHOULD authenticate using certificates with
-   at least a 2048-bit modulus for the public key.
-</t>
-<t>
-   In addition, the use of the SHA-256 hash algorithm is RECOMMENDED; and SHA-1 or MD5 MUST NOT be used 
-   (see <xref target="CAB-Baseline" /> for
-   more details).  Clients MUST indicate to servers that they request
-   SHA-256, by using the "Signature Algorithms" extension defined in
-   TLS 1.2.
-</t> 
-</section>
-
 <section anchor="IANA" title="IANA Considerations">
 <t> The document updates the "TLS SignatureScheme" registry to change the recommended status of 
 SHA-1 based signature schemes to N (not recommended) as defined by <xref target="RFC8447"></xref>.  
