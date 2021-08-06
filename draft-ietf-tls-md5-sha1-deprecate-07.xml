@@ -173,9 +173,10 @@
    <section anchor="Signature_algorithms" title="Signature Algorithms">
    <t>
    Clients MUST include the signature_algorithms extension. Clients MUST NOT include MD5
-   and SHA-1 in it this extension. If a client does not send a signature_algorithms
-   extension, then the server MUST abort the handshake and send a handshake_failure alert,
-   except when digital signatures are not used (for example, when using PSK ciphers).
+   and SHA-1 in it this extension. Servers MUST NOT include MD5 and SHA-1 in ServerKeyExchange 
+   messages. If no other signature algorithms are available (for example, if the client does 
+   not send a signature_algorithms extension), the server MUST abort the handshake with a 
+   handshake_failure alert or select a different cipher suite.
    </t>
    </section>
    <section anchor="cert_requests" title="Certificate Request">
