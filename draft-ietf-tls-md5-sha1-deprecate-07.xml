@@ -173,7 +173,7 @@
    <section anchor="Signature_algorithms" title="Signature Algorithms">
    <t>
    Clients MUST include the signature_algorithms extension. Clients MUST NOT include MD5
-   and SHA-1 in it this extension.
+   and SHA-1 in this extension.
    </t>
    </section>
    <section anchor="cert_requests" title="Certificate Request">
