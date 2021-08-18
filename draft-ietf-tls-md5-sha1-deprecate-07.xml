@@ -55,7 +55,7 @@
    <!-- The abbreviated title is used in the page header - it is only necessary if the 
         full title is longer than 39 characters -->
 
-   <title abbrev="draft-ietf-tls-md5-sha1-deprecate">Deprecating MD5 and SHA-1 signature hashes in TLS 1.2</title>
+   <title abbrev="draft-ietf-tls-md5-sha1-deprecate">Deprecating MD5 and SHA-1 signature hashes in (D)TLS 1.2</title>
 
    <!-- add 'role="editor"' below for the editors if appropriate -->
 
@@ -89,8 +89,14 @@
    </author>
 
 <author fullname="Kathleen Moriarty" initials="K.M." surname="Moriarty" >
-<organization>Dell Technologies</organization>
+<organization abbrev="CIS" showOnFronntPage="true">Center for Interent Security</organization>
 <address>
+<postal>
+<street/>
+<city>East Greenbush</city>
+<region>NY</region>
+<country>United States of America</country>
+</postal>
 <email>Kathleen.Moriarty.ietf@gmail.com</email>
 </address>
 </author>
@@ -381,7 +387,7 @@ Ballot 118 -- SHA-1 Sunset (passed)
 </reference>
 
 <reference anchor="Transcript-Collision"  
-target="https://www.mitls.org/downloads/transcript-collisions.pdf">
+target="https://hal.inria.fr/hal-01244855/document">
 <front>
 <title>
 Transcript Collision Attacks: Breaking Authentication in TLS, IKE, and SSH
@@ -396,9 +402,8 @@ Transcript Collision Attacks: Breaking Authentication in TLS, IKE, and SSH
 </front>
 </reference>
 
-
 <reference anchor="SHA-1-Collision"  
-target="http://shattered.io/static/shattered.pdf">
+target="https://eprint.iacr.org/2017/190">
 <front>
 <title>
 The first collision for full SHA-1
@@ -422,7 +427,8 @@ The first collision for full SHA-1
 </front>
 </reference>
 	   
-<reference anchor="Wang">
+<reference anchor="Wang"
+target="https://www.iacr.org/archive/crypto2005/36210017/36210017.pdf">
 <front>
 <title>
 Finding Collisions in the Full SHA-1
