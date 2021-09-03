@@ -11,7 +11,6 @@
 <!ENTITY RFC3552 SYSTEM "http://xml.resource.org/public/rfc/bibxml/reference.RFC.3552.xml">
 <!ENTITY RFC5226 SYSTEM "http://xml.resource.org/public/rfc/bibxml/reference.RFC.5226.xml">
 <!ENTITY RFC6151 SYSTEM "http://xml.resource.org/public/rfc/bibxml/reference.RFC.6151.xml">
-<!ENTITY RFC7525 SYSTEM "http://xml.resource.org/public/rfc/bibxml/reference.RFC.7525.xml">
 <!ENTITY RFC8174 SYSTEM "http://xml.resource.org/public/rfc/bibxml/reference.RFC.8174.xml">
 <!ENTITY RFC8446 SYSTEM "http://xml.resource.org/public/rfc/bibxml/reference.RFC.8446.xml">
 <!ENTITY RFC8447 SYSTEM "http://xml.resource.org/public/rfc/bibxml/reference.RFC.8447.xml">
@@ -42,7 +41,7 @@
 <?rfc subcompact="no" ?>
 <!-- keep one blank line between list items -->
 <!-- end of list of popular I-D processing instructions -->
-<rfc category="std" docName="draft-ietf-tls-md5-sha1-deprecate-07" ipr="trust200902" updates="5246 7525">
+<rfc category="std" docName="draft-ietf-tls-md5-sha1-deprecate-07" ipr="trust200902" updates="5246">
  <!-- category values: std, bcp, info, exp, and historic
     ipr values: trust200902, noModificationTrust200902, noDerivativesTrust200902,
        or pre5378Trust200902
@@ -140,7 +139,7 @@
    <abstract>
        <t>
            The MD5 and SHA-1 hashing algorithms are increasingly vulnerable to attack and this document deprecates their use in TLS 1.2 digital signatures.
-        However, this document does not deprecate SHA-1 in HMAC for record protection. This document updates RFC 5246 and RFC 7525.
+        However, this document does not deprecate SHA-1 in HMAC for record protection. This document updates RFC 5246.
     </t>
    </abstract>
  </front>
@@ -160,8 +159,7 @@
     researchers from Google and CWI Amsterdam 
     <xref target="SHA-1-Collision" /> 
     proved SHA-1 collision attacks were practical.
-     This document updates <xref
-     target="RFC5246" /> and <xref target="RFC7525" />
+     This document updates <xref target="RFC5246" /> 
      in such a way that MD5 and SHA-1 MUST NOT
      be used for digital signatures.  However, this document does not deprecate SHA-1 in HMAC for record protection.
      Note that the CABF has also deprecated use of SHA-1 <xref target="CABF"/>.
@@ -228,37 +226,6 @@ instead, due to MD5 and SHA-1 being deprecated.
    rules, but as a practical matter one can assume that the peer supports
    SHA-256."
 </t>
-</section>
-
-<section anchor="updates_to_rfc7525" title="Updates to RFC7525">
-<t>
-<xref target="RFC7525" />, Recommendations for Secure Use of Transport Layer Security (TLS) and 
-Datagram Transport Layer Security (DTLS), recommends use of SHA-256 as a minimum requirement.  
-This update moves the minimum recommendation to use stronger language deprecating use of 
-both SHA-1 and MD5.  The prior text did not explicitly include MD5 or SHA-1; and this text
-adds guidance to ensure that these algorithms have been deprecated.
-</t>
-<t>Section 4.3:</t>
-<t>OLD:</t>
-<t>   When using RSA, servers SHOULD authenticate using certificates with
-   at least a 2048-bit modulus for the public key.  In addition, the use of the
-   SHA-256 hash algorithm is RECOMMENDED (see <xref target="CAB-Baseline"></xref> for
-   more details).  Clients SHOULD indicate to servers that they request
-   SHA-256, by using the "Signature Algorithms" extension defined in
-   TLS 1.2.</t>
-
-<t>NEW:</t>
-<t>
-   Servers SHOULD authenticate using certificates with
-   at least a 2048-bit modulus for the public key.
-</t>
-<t>
-   In addition, the use of the SHA-256 hash algorithm is RECOMMENDED; and SHA-1 or MD5 MUST NOT be used 
-   (see <xref target="CAB-Baseline" /> for
-   more details).  Clients MUST indicate to servers that they request
-   SHA-256, by using the "Signature Algorithms" extension defined in
-   TLS 1.2.
-</t> 
 </section>
 
 <section anchor="IANA" title="IANA Considerations">
