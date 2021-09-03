@@ -11,7 +11,6 @@
 <!ENTITY RFC3552 SYSTEM "http://xml.resource.org/public/rfc/bibxml/reference.RFC.3552.xml">
 <!ENTITY RFC5226 SYSTEM "http://xml.resource.org/public/rfc/bibxml/reference.RFC.5226.xml">
 <!ENTITY RFC6151 SYSTEM "http://xml.resource.org/public/rfc/bibxml/reference.RFC.6151.xml">
-<!ENTITY RFC7525 SYSTEM "http://xml.resource.org/public/rfc/bibxml/reference.RFC.7525.xml">
 <!ENTITY RFC8174 SYSTEM "http://xml.resource.org/public/rfc/bibxml/reference.RFC.8174.xml">
 <!ENTITY RFC8446 SYSTEM "http://xml.resource.org/public/rfc/bibxml/reference.RFC.8446.xml">
 <!ENTITY RFC8447 SYSTEM "http://xml.resource.org/public/rfc/bibxml/reference.RFC.8447.xml">
@@ -42,7 +41,7 @@
 <?rfc subcompact="no" ?>
 <!-- keep one blank line between list items -->
 <!-- end of list of popular I-D processing instructions -->
-<rfc category="std" docName="draft-ietf-tls-md5-sha1-deprecate-07" ipr="trust200902" updates="5246 7525">
+<rfc category="std" docName="draft-ietf-tls-md5-sha1-deprecate-07" ipr="trust200902" updates="5246">
  <!-- category values: std, bcp, info, exp, and historic
     ipr values: trust200902, noModificationTrust200902, noDerivativesTrust200902,
        or pre5378Trust200902
@@ -134,7 +133,7 @@
    <abstract>
        <t>
            The MD5 and SHA-1 hashing algorithms are increasingly vulnerable to attack and this document deprecates their use in TLS 1.2 digital signatures.
-        However, this document does not deprecate SHA-1 in HMAC for record protection. This document updates RFC 5246 and RFC 7525.
+        However, this document does not deprecate SHA-1 in HMAC for record protection. This document updates RFC 5246.
     </t>
    </abstract>
  </front>
@@ -154,8 +153,7 @@
     researchers from Google and CWI Amsterdam 
     <xref target="SHA-1-Collision" /> 
     proved SHA-1 collision attacks were practical.
-     This document updates <xref
-     target="RFC5246" /> and <xref target="RFC7525" />
+     This document updates <xref target="RFC5246" /> 
      in such a way that MD5 and SHA-1 MUST NOT
      be used for digital signatures.  However, this document does not deprecate SHA-1 in HMAC for record protection.
      Note that the CABF has also deprecated use of SHA-1 <xref target="CABF"/>.
