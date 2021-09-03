@@ -176,10 +176,8 @@
 
    <section anchor="Signature_algorithms" title="Signature Algorithms">
    <t>
-   Clients MUST NOT include MD5 and SHA-1 in the signature_algorithms extension. If
-   a client does not send a signature_algorithms extension, then the server
-   MUST abort the handshake and send a handshake_failure alert, except when
-   digital signatures are not used (for example, when using PSK ciphers).
+   Clients MUST include the signature_algorithms extension. Clients MUST NOT include MD5
+   and SHA-1 in this extension.
    </t>
    </section>
    <section anchor="cert_requests" title="Certificate Request">
@@ -189,9 +187,11 @@
    </section>
   <section anchor="serverkeyexchange" title="Server Key Exchange">
    <t>
-   Servers MUST NOT include MD5 and SHA-1 in ServerKeyExchange messages. 
-   If a client receives a MD5 or SHA-1 signature in a ServerKeyExchange
-   message it MUST abort the connection with the illegal_parameter alert.
+   Servers MUST NOT include MD5 and SHA-1 in ServerKeyExchange 
+   messages. If no other signature algorithms are available (for
+   example, if the client does not send a signature_algorithms extension),
+   the server MUST abort the handshake with a handshake_failure alert or
+   select a different cipher suite.
    </t>
    </section>
   <section anchor="CertificateVerify" title="Certificate Verify">
@@ -201,32 +201,6 @@
    abort the connection with handshake_failure or insufficient_security alert.
    </t>
    </section>
-   
-<section anchor="updates_to_rfc5246" title="Updates to RFC5246">
-<t>
-<xref target="RFC5246" />, The Transport Layer Security (TLS) Protocol
-Version 1.2, suggests that implementations can assume support for MD5 and SHA-1
-by their peer. This update changes the suggestion to assume support for SHA-256
-instead, due to MD5 and SHA-1 being deprecated.
-</t>
-<t>In Section 7.4.1.4.1: the text should be revised from:
-</t>
-<t> OLD: </t>
-<t>
-   "Note: this is
-   a change from TLS 1.1 where there are no explicit rules, but as a
-   practical matter one can assume that the peer supports MD5 and SHA-
-   1."
-</t>
-
-<t>   NEW: </t>
-
-<t>
-   "Note: This is a change from TLS 1.1 where there are no explicit
-   rules, but as a practical matter one can assume that the peer supports
-   SHA-256."
-</t>
-</section>
 
 <section anchor="IANA" title="IANA Considerations">
 <t> The document updates the "TLS SignatureScheme" registry to change the recommended status of 
