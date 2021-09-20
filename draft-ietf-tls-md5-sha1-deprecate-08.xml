@@ -299,19 +299,6 @@ Transitioning the Use of Cryptographic Algorithms and Key Lengths
 </front>
 </reference>
 
-<reference anchor="CAB-Baseline"  
-target="https://www.cabforum.org/documents.html">
-<front>
-<title>
-Baseline Requirements for the Issuance and Management of Publicly-Trusted Certificates Version 1.1.6
-</title>
-<author>
-<organization>CA/Browser Forum</organization>
-</author>
-<date year="2013" />
-</front>
-</reference>
-
 <reference anchor="CABF"
 target="https://cabforum.org/2014/10/16/ballot-118-sha-1-sunset/">
 <front>
