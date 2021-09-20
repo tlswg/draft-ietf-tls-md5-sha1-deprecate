@@ -188,17 +188,16 @@
   <section anchor="serverkeyexchange" title="Server Key Exchange">
    <t>
    Servers MUST NOT include MD5 and SHA-1 in ServerKeyExchange 
-   messages. If no other signature algorithms are available (for
-   example, if the client does not send a signature_algorithms extension),
-   the server MUST abort the handshake with a handshake_failure alert or
-   select a different cipher suite.
+   messages.  If the client receives a ServerKeyExchange message
+   indicating MD5 or SHA-1, then it MUST abort the connection with
+   an illegal_parameter alert. 
    </t>
    </section>
   <section anchor="CertificateVerify" title="Certificate Verify">
    <t>
    Clients MUST NOT include MD5 and SHA-1 in CertificateVerify messages. If a
    server receives a CertificateVerify message with MD5 or SHA-1 it MUST
-   abort the connection with handshake_failure or insufficient_security alert.
+   abort the connection with an illegal_parameter alert.
    </t>
    </section>
 
