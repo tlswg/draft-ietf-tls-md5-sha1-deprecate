@@ -162,7 +162,7 @@
      This document updates <xref target="RFC5246" /> 
      in such a way that MD5 and SHA-1 MUST NOT
      be used for digital signatures.  However, this document does not deprecate SHA-1 in HMAC for record protection.
-     Note that the CABF has also deprecated use of SHA-1 <xref target="CABF"/>.
+     Note that the CABF has also deprecated use of SHA-1 for use in certificate signatures <xref target="CABF"/>.
 </t>
 
      <section title="Requirements Language">
