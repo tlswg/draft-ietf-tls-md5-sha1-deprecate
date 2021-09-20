@@ -151,7 +151,7 @@
      subject to collision attacks <xref target="Wang" />. In 2011, <xref target="RFC6151" /> detailed the security considerations, including collision attacks 
      for MD5.  NIST formally deprecated use of SHA-1 in 2011 
    <xref target="NISTSP800-131A-R2" /> and 
-    disallowed its use for digital signatures at the end of 2013, based on both the Wang, et. al, attack and the 
+    disallowed its use for digital signatures at the end of 2013, based on both the Wang et al. attack and the 
     potential for brute-force attack.  In 2016, researchers from INRIA identified
     a new class of transcript collision attacks on TLS (and other protocols)
     that rely on efficient collision-finding algorithms on the underlying hash
